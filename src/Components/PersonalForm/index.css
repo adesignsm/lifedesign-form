@@ -1,0 +1,17 @@
+#form-container {
+    width: 30vw;
+}
+
+#second-form-container {
+    width: 30vw;
+}
+
+#form-container .form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#break-line {
+    width: 100%;
+    padding: 2rem 0;
+}
