@@ -1,4 +1,6 @@
 #form-container {
+    position: relative;
+    height: 100vh;
     width: 30vw;
 }
 
@@ -9,6 +11,77 @@
 #form-container .form-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+#form-container .form-container input {
+    border: none;
+    margin-bottom: 1rem;
+    width: 40vw;
+    padding: 1rem 2rem;
+    text-align: center;
+    background-color: transparent;
+}
+
+#form-container .form-container input::placeholder {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    color: #b0b0b7;
+}
+
+#form-container .form-container label {
+    font-family: "GECKO";
+    text-transform: uppercase;
+    font-size: xx-large;
+    color: #F7FC9F;
+    text-align: center;
+    -webkit-text-stroke-color: #87CEEB;
+    -webkit-text-stroke: #87CEEB;
+    -webkit-text-stroke-width: 2px;
+}
+
+#form-container .form-container input[type=submit] {
+    background-color: #FA6C1C;
+    color: #fff;
+    font-family: "GECKO";
+    font-size: x-large;
+    padding: 1rem 4rem;
+    margin-top: 5vh;
+    border-radius: 15px;
+}
+
+#form-container .form-container input[type=date] {
+    background-color: #FA6C1C;
+    color: #fff;
+    font-family: "GECKO";
+    font-size: x-large;
+    padding: 1rem 1rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#form-container .form-container select {
+    background-color: #FA6C1C;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    padding: 1rem 1rem;
+    font-size: x-large;
+    font-family: "GECKO";
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+#form-container .form-container select > option {
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    padding: 1rem 1rem;
+    font-size: x-large;
 }
 
 #break-line {

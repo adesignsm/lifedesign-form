@@ -1,3 +1,18 @@
+@font-face {
+    font-family: "GECKO";
+    src: url(./Assets/Fonts/Gecko_Lunch.ttf);
+}
+
+@font-face {
+    font-family: "RAMDONE";
+    src: url(./Assets/Fonts/Ramdone.ttf);
+}
+
+body, html {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
 #app {
     display: flex;
     flex-direction: column;
@@ -5,4 +20,20 @@
     height: 100vh;
     justify-content: space-evenly;
     align-items: center;
+}
+
+#app .unique-characters {
+    font-family: "RAMDONE";
+    font-weight: bolder;
+}
+
+#app #form-container {
+    position: relative;
+}
+
+#LD_FLOWER {
+    position: fixed;
+    right: -10vw;
+    top: -8vh;
+    width: 40rem;
 }
