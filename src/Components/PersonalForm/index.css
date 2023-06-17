@@ -16,23 +16,24 @@
 }
 
 #form-container .form-container input {
+    background-color: #FA6C1C;
+    color: #fff;
+    border-radius: 15px;
     border: none;
     margin-bottom: 1rem;
     width: 40vw;
     padding: 1rem 2rem;
     text-align: center;
-    background-color: transparent;
 }
 
 #form-container .form-container input::placeholder {
     font-family: Arial, Helvetica, sans-serif;
     font-size: medium;
-    color: #b0b0b7;
+    color: #fff;
 }
 
 #form-container .form-container label {
     font-family: "GECKO";
-    text-transform: uppercase;
     font-size: xx-large;
     color: #F7FC9F;
     text-align: center;
