@@ -157,10 +157,10 @@ const PersonalForm = () => {
                     <div id="break-line"></div>
 
                     {/*PRONOUNS INPUT*/}
-                    <label for="user-subscribe">WOULD YOU SUBSCRiBE<span className="unique-characters">?</span> OFC</label>
+                    <label htmlFor="user-subscribe">WOULD YOU SUBSCRiBE<span className="unique-characters">?</span> OFC</label>
                     <select {...register('user-subscribe')} id="subscribe" name="user-subscribe" required>
-                        <option value="he/him">YES</option>
-                        <option value="she/her">NO</option>
+                        <option value="yes">YES</option>
+                        <option value="no">NO</option>
                     </select>
                     
                     <input className="submit-button" type="submit" value="SiGN ME UP"/>

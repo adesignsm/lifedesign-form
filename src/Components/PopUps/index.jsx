@@ -47,13 +47,19 @@ const PopUps = () => {
   }, []);
 
   const handleMouseDown = () => {
+    let elementContainer = document.getElementById("popups-container");
     let imagesRemaining = images.length;
+
     const interval = setInterval(() => {
       if (imagesRemaining > 0) {
         setImages((prevImages) => prevImages.slice(1));
         imagesRemaining--;
+        elementContainer.style.zIndex = 2;
       } else {
         clearInterval(interval);
+        if (typeof(elementContainer) != "undefined" && elementContainer != null) {
+          elementContainer.style.zIndex = 0;
+        }
       }
     }, 100);
   };
