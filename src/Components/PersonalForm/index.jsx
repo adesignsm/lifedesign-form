@@ -46,6 +46,7 @@ const PersonalForm = () => {
 
     const {
         register,
+        reset,
         handleSubmit,
     } = useForm();
 
@@ -88,6 +89,9 @@ const PersonalForm = () => {
         set(ref(db, "users/" + _formData["user-lifedesigner-number"]), {
             _formData
         });
+
+        reset();
+        
     }
 
     return (
@@ -107,7 +111,7 @@ const PersonalForm = () => {
 
                     {/*PHONE NUMBER INPUT */}
                     <label htmlFor="user-phone-number">PHONE NUMBER: </label>
-                    <input {...register('user-phone-number')} name="user-phone-number" placeholder="555-308-1313" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" maxLength={12} required/>
+                    <input type="number" {...register('user-phone-number')} name="user-phone-number" placeholder="555-308-1313" required/>
 
                     {/*EMAIL INPUT */}
                     <label htmlFor="user-email">EMAiL: </label>
@@ -152,7 +156,7 @@ const PersonalForm = () => {
                     <input {...register('user-favourite-color')} name="user-favourite-color" placeholder="LiGHT TAN" required/>
                     
                     {/*LD NUMBER INPUT */}
-                    <label htmlFor="user-lifedesigner-number">LiFE DESiGN: </label>
+                    <label htmlFor="user-lifedesigner-number">LiFE DESiGNER NUMBER: </label>
                     <input type="text" {...register('user-lifedesigner-number')} name="user-lifedesigner-number" placeholder="JUAN" onChange={(e) => {setLdNumber(e.target.value)}} required/>
                     <div id="break-line"></div>
 
