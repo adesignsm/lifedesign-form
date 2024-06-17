@@ -1,0 +1,87 @@
+{
+  "inputs": [
+    {
+      "type": "text",
+      "label": "Name",
+      "name": "name",
+      "placeholder": "Enter your name",
+      "step": 2
+    },
+    {
+      "type": "date",
+      "label": "Birthday",
+      "name": "birthday",
+      "placeholder": "Enter your birthday",
+      "step": 1
+    },
+    {
+      "type": "email",
+      "label": "Email",
+      "name": "email",
+      "placeholder": "Enter your email",
+      "step": 3
+    },
+    {
+      "type": "select",
+      "label": "Shirt Size",
+      "name": "shirt_size",
+      "options": [
+        { "value": "XS", "label": "XS" },
+        { "value": "S", "label": "S" },
+        { "value": "M", "label": "M" },
+        { "value": "L", "label": "L" },
+        { "value": "XL", "label": "XL" },
+        { "value": "XXL", "label": "XXL" }
+      ],
+      "placeholder": "Select your shirt size",
+      "step": 4
+    },
+    {
+      "type": "select",
+      "label": "Pants Size",
+      "name": "pants_size",
+      "options": [
+        { "value": "28", "label": "28" },
+        { "value": "30", "label": "30" },
+        { "value": "32", "label": "32" },
+        { "value": "34", "label": "34" },
+        { "value": "36", "label": "36" },
+        { "value": "38", "label": "38" },
+        { "value": "40", "label": "40" }
+      ],
+      "placeholder": "Select your pants size",
+      "step": 5
+    },
+    {
+      "type": "select",
+      "label": "Head Size",
+      "name": "head_size",
+      "options": [
+        { "value": "S", "label": "S" },
+        { "value": "M", "label": "M" },
+        { "value": "L", "label": "L" },
+        { "value": "XL", "label": "XL" }
+      ],
+      "placeholder": "Select your head size",
+      "step": 6
+    },
+    {
+      "type": "select",
+      "label": "Shoe Size",
+      "name": "shoe_size",
+      "options": [
+        { "value": "5", "label": "5" },
+        { "value": "6", "label": "6" },
+        { "value": "7", "label": "7" },
+        { "value": "8", "label": "8" },
+        { "value": "9", "label": "9" },
+        { "value": "10", "label": "10" },
+        { "value": "11", "label": "11" },
+        { "value": "12", "label": "12" },
+        { "value": "13", "label": "13" }
+      ],
+      "placeholder": "Select your shoe size",
+      "step": 7
+    }
+  ]
+}

@@ -1,19 +1,25 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Landing } from "./Routes/Landing";
+import { Signup } from "./Routes/Signup";
+import { AppProvider } from "./context";
+
 import "./root.css";
 
-import PersonalForm from "./Components/PersonalForm";
-import PopUps from "./Components/PopUps";
-import LD_FLOWER from "./Assets/Media/LD_FLOWER.png";
-
 const App = () => {
-    return (
-        <>
-            <img id="LD_FLOWER" src={LD_FLOWER} />
-            <div id="app">
-                <PersonalForm />
-                <PopUps />
-            </div>
-        </>
-    )
-}
+  return (
+    <>
+      <AppProvider>
+        <main className="main">
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Landing />} />
+              <Route path="/signup" element={<Signup />} />
+            </Routes>
+          </BrowserRouter>
+        </main>
+      </AppProvider>
+    </>
+  );
+};
 
 export default App;

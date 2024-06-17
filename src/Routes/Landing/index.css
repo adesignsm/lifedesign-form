@@ -1,0 +1,34 @@
+.landing-container {
+  height: 100vh;
+  width: 100%;
+}
+
+.landing-container .video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+
+.landing-container .video-container.clickable {
+  animation: pulse 1s infinite ease-in-out;
+  transform-origin: center;
+}
+
+.landing-container .video-container video {
+  object-fit: contain;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+}
