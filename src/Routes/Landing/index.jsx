@@ -19,6 +19,7 @@ export const Landing = () => {
             muted
             onClick={handleClick}
             onEnded={(e) => handleOnEnded(e)}
+            playsInline
           >
             <source src={FESTII_VIDEO} type="video/mp4" />
           </video>
