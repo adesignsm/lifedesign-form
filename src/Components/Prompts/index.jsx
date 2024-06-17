@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import firebaseClient from "../../firebaseClient";
 import { initializeApp } from "firebase/app";
 import { get, getDatabase, set, child, ref } from "firebase/database";
@@ -13,39 +13,25 @@ const app = initializeApp(firebaseClient);
 export const Prompts = () => {
   const { context } = useAppContext();
   const { register, handleSubmit } = useForm();
+  const [animate, setAnimate] = useState(true);
 
-  const generateLdNumber = () => {
+  const validateLdNumber = async (ld_number) => {
     const db_ref = ref(getDatabase());
+    const snapshot = await get(child(db_ref, "users/"));
 
-    get(child(db_ref, "users/")).then((snapshot) => {
-      if (snapshot.exists()) {
-        const dataSnapshot = snapshot.val();
-        let isUnique = false;
-        let generatedLdNumber;
-        let generatedLdNumberStr;
+    if (snapshot.exists()) {
+      const dataSnapshot = snapshot.val();
+      const validatedLdNumberStr = ld_number.toString();
 
-        while (!isUnique) {
-          generatedLdNumber =
-            Math.floor(Math.random() * (1000 - 300 + 1)) + 300;
-          generatedLdNumberStr = generatedLdNumber.toString();
-          isUnique = true;
-
-          for (const data in dataSnapshot) {
-            if (generatedLdNumberStr === data) {
-              console.log(
-                "Invalid number already exists:",
-                generatedLdNumberStr
-              );
-              isUnique = false;
-              break;
-            }
-          }
+      for (const data in dataSnapshot) {
+        if (validatedLdNumberStr === data) {
+          alert("Number taken already");
+          return false;
         }
-
-        context.setLdNumber(generatedLdNumberStr);
-        context.setPromptStep(1);
       }
-    });
+      return true;
+    }
+    return false;
   };
 
   const writeToFirebase = (_formData) => {
@@ -54,6 +40,28 @@ export const Prompts = () => {
     set(ref(db, "users/" + _formData["ld_number"]), {
       _formData,
     });
+  };
+
+  const onSubmit = async (data) => {
+    if (context.promptStep === 8) {
+      const valid = await validateLdNumber(data.ld_number);
+
+      if (valid) {
+        writeToFirebase(data);
+        context.setPromptStep((prevStep) => prevStep + 1);
+        context.setLdNumber(data.ld_number);
+      } else {
+        context.setPromptStep(8);
+        document.getElementById("type-input").value = "";
+      }
+    } else {
+      context.setPromptStep((prevStep) => prevStep + 1);
+      setAnimate(false);
+
+      setTimeout(() => {
+        setAnimate(true);
+      }, 100);
+    }
   };
 
   const renderInput = (input) => {
@@ -65,11 +73,12 @@ export const Prompts = () => {
           <div key={input.name}>
             <label>{input.label}</label>
             <input
+              id="type-input"
               type={input.type}
               name={input.name}
               placeholder={input.placeholder}
               {...register(input.name)}
-              required
+              required={input.name === "ld_number" ? true : false}
             />
           </div>
         );
@@ -77,7 +86,12 @@ export const Prompts = () => {
         return (
           <div key={input.name}>
             <label>{input.label}</label>
-            <select name={input.name} {...register(input.name)} required>
+            <select
+              id="select-input"
+              name={input.name}
+              {...register(input.name)}
+              //   required
+            >
               {input.options.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
@@ -91,27 +105,17 @@ export const Prompts = () => {
     }
   };
 
-  useEffect(() => {
-    generateLdNumber();
-  }, []);
-
-  const onSubmit = (data) => {
-    console.log(data);
-    context.setPromptStep((prevStep) => prevStep + 1);
-
-    if (context.promptStep >= 8) {
-      data.ld_number = context.ldNumber;
-      writeToFirebase(data);
-    }
-  };
-
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form
+        id="input-form"
+        className={`${animate === true ? "animate" : "revert"}`}
+        onSubmit={handleSubmit(onSubmit)}
+      >
         {formConfig.inputs
           .filter((input) => input.step === context.promptStep)
           .map((input) => renderInput(input))}
-        {context.promptStep != 9 && <button type="submit">Submit</button>}
+        {context.promptStep != 9 && <button type="submit">Next</button>}
       </form>
     </>
   );

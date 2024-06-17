@@ -2,6 +2,13 @@
   "inputs": [
     {
       "type": "text",
+      "label": "LD #",
+      "name": "ld_number",
+      "placeholder": "Enter your LD #",
+      "step": 8
+    },
+    {
+      "type": "text",
       "label": "Name",
       "name": "name",
       "placeholder": "Enter your name",

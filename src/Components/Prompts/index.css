@@ -1,0 +1,100 @@
+.signup-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.signup-container form div {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  align-items: center;
+  gap: 10px;
+}
+
+.signup-container form div label {
+  font-family: "GECKO";
+  -webkit-text-stroke: #87ceeb;
+  -webkit-text-stroke-width: 2px;
+  color: #f7fc9f;
+  font-size: xxx-large;
+  text-transform: uppercase;
+}
+
+.signup-container form div input {
+  background-color: #fa6c1c;
+  border: none;
+  border-radius: 15px;
+  color: #fff;
+  margin-bottom: 1rem;
+  padding: 1rem 2rem;
+  border: none;
+}
+
+.signup-container form div input::placeholder {
+  color: #fff;
+  font-size: large;
+  text-align: center;
+}
+
+.signup-container form div select {
+  background-color: #fa6c1c;
+  font-family: GECKO;
+  text-align: center;
+  color: #fff;
+  padding: 0.5rem;
+  font-size: x-large;
+  border: none;
+  border-radius: 10px;
+}
+
+.signup-container form div input:focus {
+  outline: none;
+}
+
+.signup-container form button {
+  background-color: #fa6c1c;
+  border-radius: 15px;
+  color: #fff;
+  font-family: GECKO;
+  font-size: xx-large;
+  text-align: center;
+  border: none;
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+}
+
+#input-form {
+  position: absolute;
+  margin: 0 auto;
+  width: 100%;
+  transform: scale(0.1);
+  bottom: -100%;
+}
+
+#input-form.animate {
+  animation: slideIn 3s forwards;
+}
+
+#input-form.revert {
+  transform: scale(0.1);
+  bottom: -100%;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: scale(0.1);
+    bottom: -100%;
+    z-index: 0;
+  }
+  50% {
+    transform: scale(0.4);
+    bottom: 110%;
+  }
+  100% {
+    transform: scale(1);
+    bottom: 40%;
+    z-index: 1;
+  }
+}
