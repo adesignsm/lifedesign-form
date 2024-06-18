@@ -8,6 +8,11 @@
   src: url(./Assets/Fonts/Ramdone.ttf);
 }
 
+button,
+input {
+  appearance: none;
+}
+
 body,
 html {
   height: 100%;

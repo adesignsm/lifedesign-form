@@ -1,16 +1,26 @@
+import { useRef } from "react";
 import { useAppContext } from "../../context";
 import { Prompts } from "../../Components/Prompts";
 import ConfettiExplosion from "react-confetti-explosion";
 
 import VOLCANO from "../../Assets/Media/volcano.png";
+import FESTII_AUDIO from "../../Assets/Media/bgMusic.mp3";
 import "./index.css";
 
 export const Signup = () => {
   const { context } = useAppContext();
+  const audioRef = useRef();
+
+  const handleOnClick = () => {
+    if (context.promptStep === 1) {
+      audioRef.current.volume = 0.1;
+      audioRef.current.play();
+    }
+  };
 
   return (
     <>
-      <div className="signup-container">
+      <div className="signup-container" onClick={handleOnClick}>
         {context.ldNumber && (
           <ConfettiExplosion
             zIndex={9}
@@ -26,9 +36,9 @@ export const Signup = () => {
         {context.ldNumber !== null ? (
           <div className="congrats-container">
             <h1>
-              Congratulations LD <span>#{context.ldNumber}</span>
+              CONGRATULATiONS LiFE DESIGNER <span>#{context.ldNumber}</span>
             </h1>
-            <h3>welcome to the team!</h3>
+            <h3>PHiLiPPiNES iS PROUD OF UUUU</h3>
           </div>
         ) : (
           <Prompts
@@ -37,6 +47,7 @@ export const Signup = () => {
           />
         )}
       </div>
+      <audio ref={audioRef} id="festii-audio" src={FESTII_AUDIO} loop />
     </>
   );
 };
