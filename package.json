@@ -15,7 +15,12 @@
     "react-hook-form": "^7.43.9",
     "react-router-dom": "^6.23.1",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "@react-spring/three": "^9.7.3",
+    "@react-three/drei": "^9.96.1",
+    "@react-three/fiber": "^8.15.14",
+    "@react-three/postprocessing": "^2.16.0",
+    "three": "^0.160.1"
   },
   "scripts": {
     "start": "react-scripts start",

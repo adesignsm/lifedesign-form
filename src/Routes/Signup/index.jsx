@@ -1,7 +1,9 @@
 import { useRef } from "react";
 import { useAppContext } from "../../context";
-import { Prompts } from "../../Components/Prompts";
 import ConfettiExplosion from "react-confetti-explosion";
+
+import { Prompts } from "../../Components/Prompts";
+import { Model } from "../../Components/Model";
 
 import VOLCANO from "../../Assets/Media/volcano.png";
 import FESTII_AUDIO from "../../Assets/Media/bgMusic.mp3";
@@ -48,6 +50,7 @@ export const Signup = () => {
         )}
       </div>
       <audio ref={audioRef} id="festii-audio" src={FESTII_AUDIO} loop />
+      <Model />
     </>
   );
 };
