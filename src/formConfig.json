@@ -1,7 +1,7 @@
 {
   "inputs": [
     {
-      "type": "text",
+      "type": "number",
       "label": "LD #",
       "name": "ld_number",
       "placeholder": "ENTER YOUR LD #",

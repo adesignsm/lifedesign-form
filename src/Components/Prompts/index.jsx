@@ -12,8 +12,10 @@ const app = initializeApp(firebaseClient);
 
 export const Prompts = () => {
   const { context } = useAppContext();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, setValue, getValues } = useForm();
   const [animate, setAnimate] = useState(true);
+  const [showLDButton, setShowLDButton] = useState(false);
+  const [generatedLdNumber, setGeneratedLdNumber] = useState(null);
 
   const validateLdNumber = async (ld_number) => {
     const db_ref = ref(getDatabase());
@@ -25,13 +27,41 @@ export const Prompts = () => {
 
       for (const data in dataSnapshot) {
         if (validatedLdNumberStr === data) {
-          alert("Number taken already");
+          if (!showLDButton && !generatedLdNumber) {
+            alert("Number taken already");
+          }
+          setShowLDButton(true);
           return false;
         }
       }
       return true;
     }
     return false;
+  };
+
+  const generateUniqueLdNumber = async () => {
+    let isUnique = false;
+    let newLdNumber;
+
+    while (!isUnique) {
+      newLdNumber = Math.floor(Math.random() * (1000 - 300 + 1)) + 300;
+      isUnique = await validateLdNumber(newLdNumber);
+    }
+
+    return newLdNumber;
+  };
+
+  const handleGenerateLdNumber = async () => {
+    const newLdNumber = await generateUniqueLdNumber();
+    setGeneratedLdNumber(newLdNumber);
+    setValue("ld_number", newLdNumber);
+
+    const formData = getValues();
+    formData.ld_number = newLdNumber;
+
+    writeToFirebase(formData);
+    context.setPromptStep((prevStep) => prevStep + 1);
+    context.setLdNumber(newLdNumber);
   };
 
   const writeToFirebase = (_formData) => {
@@ -69,6 +99,7 @@ export const Prompts = () => {
       case "text":
       case "date":
       case "email":
+      case "number":
         return (
           <div key={input.name}>
             <label>{input.label}</label>
@@ -76,9 +107,15 @@ export const Prompts = () => {
               id="type-input"
               type={input.type}
               name={input.name}
-              placeholder={input.placeholder}
-              {...register(input.name)}
-              required={input.name === "ld_number" ? true : false}
+              placeholder={
+                input.name === "ld_number" && showLDButton && generatedLdNumber
+                  ? generatedLdNumber
+                  : input.placeholder
+              }
+              {...register(input.name, {
+                required: input.name === "ld_number" ? true : false,
+                pattern: input.name === "ld_number" ? /^[0-9]*$/ : undefined,
+              })}
             />
           </div>
         );
@@ -115,7 +152,18 @@ export const Prompts = () => {
         {formConfig.inputs
           .filter((input) => input.step === context.promptStep)
           .map((input) => renderInput(input))}
-        {context.promptStep != 9 && <button type="submit">Next</button>}
+        {context.promptStep != 9 && !showLDButton && (
+          <button type="submit">Next</button>
+        )}
+        {showLDButton && (
+          <button
+            type="button"
+            className="ld-number-generator"
+            onClick={handleGenerateLdNumber}
+          >
+            TAKE NEXT AVAiLABLE NUMBER
+          </button>
+        )}
       </form>
     </>
   );
