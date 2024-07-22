@@ -16,6 +16,7 @@ export const Prompts = () => {
   const [animate, setAnimate] = useState(true);
   const [showLDButton, setShowLDButton] = useState(false);
   const [generatedLdNumber, setGeneratedLdNumber] = useState(null);
+  const [isChecked, setIsChecked] = useState(false);
 
   const validateLdNumber = async (ld_number) => {
     const db_ref = ref(getDatabase());
@@ -62,6 +63,12 @@ export const Prompts = () => {
     writeToFirebase(formData);
     context.setPromptStep((prevStep) => prevStep + 1);
     context.setLdNumber(newLdNumber);
+  };
+
+  const handleCheckboxChange = () => {
+    if (context.promptStep === 8) {
+      setIsChecked(!isChecked);
+    }
   };
 
   const writeToFirebase = (_formData) => {
@@ -148,21 +155,45 @@ export const Prompts = () => {
         id="input-form"
         className={`${animate === true ? "animate" : "revert"}`}
         onSubmit={handleSubmit(onSubmit)}
+        style={{ marginTop: `${context.promptStep === 8 && "1rem"}` }}
       >
         {formConfig.inputs
           .filter((input) => input.step === context.promptStep)
           .map((input) => renderInput(input))}
         {context.promptStep != 9 && !showLDButton && (
-          <button type="submit">Next</button>
+          <button
+            type="submit"
+            disabled={!isChecked && context.promptStep === 8}
+          >
+            Next
+          </button>
         )}
         {showLDButton && (
           <button
             type="button"
             className="ld-number-generator"
             onClick={handleGenerateLdNumber}
+            disabled={!isChecked}
           >
             TAKE NEXT AVAiLABLE NUMBER
           </button>
+        )}
+        {context.promptStep === 8 && (
+          <div className="consent-container">
+            <input
+              type="checkbox"
+              onTouchStart={handleCheckboxChange}
+              checked={isChecked}
+              name="consent-check"
+              className="chekcbox"
+            />
+            <p for="consent-check">
+              Join the LiFE DESiGN community and get exclusive access to our
+              latest drops and events–like FESTii on July <span>27-28!</span> By
+              subscribing, you consent to receive promotional emails from us. No
+              spam, just the good stuff. Unsubscribe at any time.
+            </p>
+          </div>
         )}
       </form>
     </>
