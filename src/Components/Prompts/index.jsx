@@ -31,7 +31,6 @@ export const Prompts = () => {
           if (!showLDButton && !generatedLdNumber) {
             alert("Number taken already");
           }
-          setShowLDButton(true);
           return false;
         }
       }
@@ -79,6 +78,15 @@ export const Prompts = () => {
     });
   };
 
+  const emailChecker = () => {
+    if (
+      context.promptStep === 3 &&
+      document.getElementById("type-input").value === ""
+    ) {
+      alert("ENTER YOUR EMAiL TO PROCEED");
+    }
+  };
+
   const onSubmit = async (data) => {
     if (context.promptStep === 8) {
       const valid = await validateLdNumber(data.ld_number);
@@ -120,7 +128,10 @@ export const Prompts = () => {
                   : input.placeholder
               }
               {...register(input.name, {
-                required: input.name === "ld_number" ? true : false,
+                required:
+                  input.name === "ld_number" || input.type === "email"
+                    ? true
+                    : false,
                 pattern: input.name === "ld_number" ? /^[0-9]*$/ : undefined,
               })}
             />
@@ -160,15 +171,16 @@ export const Prompts = () => {
         {formConfig.inputs
           .filter((input) => input.step === context.promptStep)
           .map((input) => renderInput(input))}
-        {context.promptStep != 9 && !showLDButton && (
+        {context.promptStep != 8 && (
           <button
             type="submit"
             disabled={!isChecked && context.promptStep === 8}
+            onClick={() => emailChecker()}
           >
             Next
           </button>
         )}
-        {showLDButton && (
+        {context.promptStep === 8 && (
           <button
             type="button"
             className="ld-number-generator"
@@ -188,10 +200,8 @@ export const Prompts = () => {
               className="chekcbox"
             />
             <p for="consent-check">
-              Join the LiFE DESiGN community and get exclusive access to our
-              latest drops and events–like FESTii on July <span>27-28!</span> By
-              subscribing, you consent to receive promotional emails from us. No
-              spam, just the good stuff. Unsubscribe at any time.
+              Check this box to receive exclusive communications and updates
+              from our partners (brands, drops, and things you show know).
             </p>
           </div>
         )}

@@ -38,7 +38,7 @@ export const Signup = () => {
         {context.ldNumber !== null ? (
           <div className="congrats-container">
             <h1>
-              CONGRATULATiONS LiFE DESIGNER <span>#{context.ldNumber}</span>
+              CONGRATULATiONS LiFE DESiGNER <span>#{context.ldNumber}</span>
             </h1>
             <h3>PHiLiPPiNES iS PROUD OF UUUU</h3>
           </div>

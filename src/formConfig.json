@@ -2,7 +2,7 @@
   "inputs": [
     {
       "type": "number",
-      "label": "LD #",
+      "label": "LD NUMBER",
       "name": "ld_number",
       "placeholder": "ENTER YOUR LD #",
       "step": 8

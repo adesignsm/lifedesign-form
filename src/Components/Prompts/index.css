@@ -86,6 +86,10 @@ input[type="date"]:before {
   animation-delay: 1s;
 }
 
+#input-form input[name="ld_number"] {
+  display: none;
+}
+
 #input-form.revert {
   transform: scale(0.1);
   bottom: 20%;
@@ -103,7 +107,7 @@ input[type="date"]:before {
   display: flex;
   flex-direction: row;
   align-items: start;
-  margin-top: 15rem;
+  margin-top: 10rem;
 }
 
 #input-form .consent-container input[type="checkbox" i] {
