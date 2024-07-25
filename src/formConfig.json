@@ -1,0 +1,107 @@
+{
+  "inputs": [
+    {
+      "type": "number",
+      "label": "LD NUMBER",
+      "name": "ld_number",
+      "placeholder": "ENTER YOUR LD #",
+      "step": 8
+    },
+    {
+      "type": "text",
+      "label": "NAME",
+      "name": "name",
+      "placeholder": "ENTER YOUR NAME",
+      "step": 2
+    },
+    {
+      "type": "date",
+      "label": "BiRTHDAY",
+      "name": "birthday",
+      "placeholder": "ENTER YOUR BiRTHDAY",
+      "step": 1
+    },
+    {
+      "type": "email",
+      "label": "EMAiL",
+      "name": "email",
+      "placeholder": "ENTER YOUR EMAiL",
+      "step": 3
+    },
+    {
+      "type": "select",
+      "label": "SHiRT SiZE",
+      "name": "shirt_size",
+      "options": [
+        { "value": "XS", "label": "XS" },
+        { "value": "S", "label": "S" },
+        { "value": "M", "label": "M" },
+        { "value": "L", "label": "L" },
+        { "value": "XL", "label": "XL" },
+        { "value": "XXL", "label": "XXL" }
+      ],
+      "placeholder": "SELECT YOUR SHiRT SiZE",
+      "step": 4
+    },
+    {
+      "type": "select",
+      "label": "PANTS SiZE",
+      "name": "pants_size",
+      "options": [
+        { "value": "28", "label": "28" },
+        { "value": "30", "label": "30" },
+        { "value": "32", "label": "32" },
+        { "value": "34", "label": "34" },
+        { "value": "36", "label": "36" },
+        { "value": "38", "label": "38" },
+        { "value": "40", "label": "40" }
+      ],
+      "placeholder": "SELECT YOUR PANT SiZE",
+      "step": 5
+    },
+    {
+      "type": "select",
+      "label": "HEAD SiZE",
+      "name": "head_size",
+      "options": [
+        { "value": "7", "label": "7" },
+        { "value": "7_1/8", "label": "7 1/8" },
+        { "value": "7_1/4", "label": "7 1/4" },
+        { "value": "7_3/8", "label": "7 3/8" },
+        { "value": "7_1/2", "label": "7 1/2" },
+        { "value": "7_5/8", "label": "7 5/8" },
+        { "value": "7_3/4", "label": "7 3/4" },
+        { "value": "7_7/8", "label": "7 7/8" },
+        { "value": "8", "label": "8" }
+      ],
+      "placeholder": "SELECT YOUR HEAD SiZE",
+      "step": 6
+    },
+    {
+      "type": "select",
+      "label": "SHOE SiZE",
+      "name": "shoe_size",
+      "options": [
+        { "value": "5", "label": "5" },
+        { "value": "5.5", "label": "5.5" },
+        { "value": "6", "label": "6" },
+        { "value": "6.5", "label": "6.5" },
+        { "value": "7", "label": "7" },
+        { "value": "7.5", "label": "7.5" },
+        { "value": "8", "label": "8" },
+        { "value": "8.5", "label": "8.5" },
+        { "value": "9", "label": "9" },
+        { "value": "9.5", "label": "9.5" },
+        { "value": "10", "label": "10" },
+        { "value": "10.5", "label": "10.5" },
+        { "value": "11", "label": "11" },
+        { "value": "11.5", "label": "11.5" },
+        { "value": "12", "label": "12" },
+        { "value": "12.5", "label": "12.5" },
+        { "value": "13", "label": "13" }
+      ],
+      "placeholder": "SELECT YOUR SHOE SiZE",
+      "step": 7
+    }
+  ]
+}
