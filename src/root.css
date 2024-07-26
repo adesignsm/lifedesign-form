@@ -9,7 +9,8 @@
 }
 
 button,
-input {
+input,
+a {
   appearance: none;
 }
 
@@ -24,6 +25,12 @@ html {
   padding: 0;
   margin: 0;
   overflow: hidden;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+  border-bottom: 1px solid #000;
 }
 
 .hex-tagline {

@@ -19,7 +19,9 @@ const App = () => {
             </Routes>
           </BrowserRouter>
           <h1 className="hex-tagline">
-            Powered by hexstudio.io <img src={HEX} />{" "}
+            Powered by{" "}
+            <a href="https://instagram.com/hexstudio.io">hexstudio.io</a>{" "}
+            <img src={HEX} />{" "}
           </h1>
         </main>
       </AppProvider>
