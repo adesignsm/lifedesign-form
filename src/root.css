@@ -25,3 +25,24 @@ html {
   margin: 0;
   overflow: hidden;
 }
+
+.hex-tagline {
+  font-family: "GECKO";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+}
+
+.hex-tagline {
+  font-size: large;
+  position: fixed;
+  bottom: 0.5rem;
+  left: 0rem;
+}
+
+.hex-tagline img {
+  border-radius: 100px;
+  width: 50px;
+}
