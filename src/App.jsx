@@ -3,6 +3,8 @@ import { Landing } from "./Routes/Landing";
 import { Signup } from "./Routes/Signup";
 import { AppProvider } from "./context";
 
+import HEX from "./Assets/Media/hex.jpg";
+
 import "./root.css";
 
 const App = () => {
@@ -16,6 +18,9 @@ const App = () => {
               <Route path="/signup" element={<Signup />} />
             </Routes>
           </BrowserRouter>
+          <h1 className="hex-tagline">
+            Powered by hexstudio.io <img src={HEX} />{" "}
+          </h1>
         </main>
       </AppProvider>
     </>
